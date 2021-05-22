@@ -13,7 +13,7 @@ LABEL description="Custom docker image for a Gtest example"
 USER root
 RUN apt-get update \
     && apt-get --yes --no-install-recommends install \
-       build-essential make cmake git wget \
+       build-essential make cmake git wget unzip \
        libgmp-dev libmpfr-dev libboost-dev \
        libcgal-qt5-dev libgtest-dev \
     && cd /usr/src/gtest/ \
@@ -25,10 +25,12 @@ RUN cd ~ && wget --no-check-certificate https://github.com/CGAL/cgal/releases/do
     cd ~/CGAL-5.2.1 && \
     cmake -B build -DCGAL_HEADER_ONLY=OFF -DCMAKE_BUILD_TYPE=Release && \
     cmake --build build --config Release && \
-    cd ~/CGAL-5.2.1/build && sudo make install
+    cd ~/CGAL-5.2.1/build && make install
 
 # Crear carpeta del proyecto
 RUN mkdir -p /home/laboratorio4/ && cd /home/laboratorio4/ && \
     wget --no-check-certificate https://github.com/robz25/Laboratorio4_IE0724/archive/refs/heads/main.zip && \
-    unzip main.zip && cd Laboratorio4_IE0724-main
+    unzip main.zip && cd /home/laboratorio4/Laboratorio4_IE0724-main && \
+    cmake -B /home/laboratorio4/Laboratorio4_IE0724-main/build -DCMAKE_BUILD_TYPE=Release && \
+    cmake --build /home/laboratorio4/Laboratorio4_IE0724-main/build --config Release
 
