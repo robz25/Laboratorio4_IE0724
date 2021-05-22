@@ -13,7 +13,7 @@ LABEL description="Custom docker image for a Gtest example"
 USER root
 RUN apt-get update \
     && apt-get --yes --no-install-recommends install \
-       build-essential make cmake git wget \
+       build-essential make cmake git wget unzip \
        libgmp-dev libmpfr-dev libboost-dev \
        libcgal-qt5-dev libgtest-dev \
     && cd /usr/src/gtest/ \
