@@ -28,6 +28,6 @@ RUN cd ~ && wget https://github.com/CGAL/cgal/releases/download/v5.2.1/CGAL-5.2.
     cd ~/CGAL-5.2.1/build && sudo make install
 
 # Crear carpeta del proyecto
-RUN mkdir -p /home/laboratorio4/ && cd /home/laboratorio4/ && /
+RUN mkdir -p /home/laboratorio4/ && cd /home/laboratorio4/ && \
     git clone https://github.com/robz25/Laboratorio4_IE0724.git .
 
