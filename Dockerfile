@@ -25,7 +25,7 @@ RUN cd ~ && wget --no-check-certificate https://github.com/CGAL/cgal/releases/do
     cd ~/CGAL-5.2.1 && \
     cmake -B build -DCGAL_HEADER_ONLY=OFF -DCMAKE_BUILD_TYPE=Release && \
     cmake --build build --config Release && \
-    cd ~/CGAL-5.2.1/build && sudo make install
+    cd ~/CGAL-5.2.1/build && make install
 
 # Crear carpeta del proyecto
 RUN mkdir -p /home/laboratorio4/ && cd /home/laboratorio4/ && \
