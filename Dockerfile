@@ -34,6 +34,7 @@ RUN mkdir -p /home/laboratorio4/ && cd /home/laboratorio4/ && \
     cmake -B /home/laboratorio4/Laboratorio4_IE0724-main/build -DCMAKE_BUILD_TYPE=Release && \
     cmake --build /home/laboratorio4/Laboratorio4_IE0724-main/build --config Release
 
-RUN cd /home/laboratorio4/Laboratorio4_IE0724-main/build && ls \
+RUN cd /home/laboratorio4/Laboratorio4_IE0724-main/build && ls
+RUN cd /home/laboratorio4/Laboratorio4_IE0724-main/build \
     ./Tests > tests.log && \
     cat tests.log
