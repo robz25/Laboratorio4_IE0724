@@ -27,7 +27,7 @@ RUN cd ~ && wget --no-check-certificate https://github.com/CGAL/cgal/releases/do
     cmake --build build --config Release && \
     cd ~/CGAL-5.2.1/build && make install
 
-# Crear carpeta del y compilar
+# Crear carpeta del proyecto y compilar
 RUN mkdir -p /home/laboratorio4/ && cd /home/laboratorio4/ && \
     wget --no-check-certificate https://github.com/robz25/Laboratorio4_IE0724/archive/refs/heads/main.zip && \
     unzip main.zip && cd /home/laboratorio4/Laboratorio4_IE0724-main && \
