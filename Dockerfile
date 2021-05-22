@@ -30,7 +30,7 @@ RUN cd ~ && wget --no-check-certificate https://github.com/CGAL/cgal/releases/do
 # Crear carpeta del proyecto
 RUN mkdir -p /home/laboratorio4/ && cd /home/laboratorio4/ && \
     wget --no-check-certificate https://github.com/robz25/Laboratorio4_IE0724/archive/refs/heads/main.zip && \
-    unzip main.zip && cd Laboratorio4_IE0724-main && \
-    cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} && \
-    cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+    unzip main.zip && cd /home/laboratorio4/Laboratorio4_IE0724-main && \
+    cmake -B /home/laboratorio4/Laboratorio4_IE0724-main/build -DCMAKE_BUILD_TYPE=Release && \
+    cmake --build /home/laboratorio4/Laboratorio4_IE0724-main/build --config Release
 
