@@ -1,10 +1,12 @@
-#include "Util.h"
 #include "gtest/gtest.h"
+
+#include "Util.hpp"
+
 
 // Positive testing: use valid input parameter: status should be 0
 TEST(Util, positive) {
     int status = false;
-    status = isInt("5");
+    status = Util::isInt("5");
     EXPECT_EQ(status, true);
 }
 
