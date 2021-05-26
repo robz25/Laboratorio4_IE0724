@@ -30,6 +30,8 @@ typedef AT::Site_2 Site_2;
 #include <CGAL/Voronoi_diagram_2/basic.h>
 #include <CGAL/license/Voronoi_diagram_2.h>
 
+#include <fstream>
+
 #include "Punto.hpp"
 
 /**
@@ -45,7 +47,8 @@ class CGALBridge {
    * @param archivo Ruta al archivo que contiene los puntos.
    * @return std::vector<Punto>* Vector con puntos parseados.
    */
-  static std::vector<Punto> *obtenerPuntos(std::string archivo) {
+  static std::vector<Punto> *obtenerPuntos(std::string archivo,
+                                           bool throwOnWarning = false) {
     std::ifstream infile(archivo);
     std::string linea;
     std::vector<Punto> *puntos = new std::vector<Punto>();
@@ -62,10 +65,15 @@ class CGALBridge {
             linea);  // Crea un punto si el formato de la línea es aceptado.
         puntos->push_back(*punto);  // Agrega el punto al vector.
       } catch (const std::exception &e) {
-        // Ignorar línea e imprimir advetencia.
-        std::cerr << "Advertencia: Línea " << i << " del archivo " << archivo
-                  << ": " << e.what() << "Contenido: " << linea << std::endl;
-        continue;
+        if (throwOnWarning) {
+          throw std::invalid_argument(
+              "Formato inválido encontrado en el archivo " + archivo + ", línea: " + std::to_string(i) + ".");
+        } else {
+          // Ignorar línea e imprimir advetencia.
+          std::cerr << "Advertencia: Línea " << i << " del archivo " << archivo
+                    << ": " << e.what() << "Contenido: " << linea << std::endl;
+          continue;
+        }
       }
     }
     return puntos;
@@ -110,10 +118,16 @@ class CGALBridge {
    * @param archivo Ruta al archivo de entrada.
    * @return VD Diagrama de voronoi.
    */
-  static VD crearDiagramaVoronoi(std::string archivo) {
+  static VD crearDiagramaVoronoi(std::string archivo,
+                                 bool throwOnWarning = false) {
     VD vd;
     Site_2 t;
-    std::vector<Punto> *puntos = obtenerPuntos(archivo);
+    std::vector<Punto> *puntos;
+    try {
+      puntos = CGALBridge::obtenerPuntos(archivo, throwOnWarning);
+    } catch (const std::exception &e) {
+      throw std::invalid_argument(e.what());
+    }
     for (auto it = puntos->begin(); it != puntos->end(); ++it) {
       std::istringstream iss(std::to_string(it->getX()) + " " +
                              std::to_string(it->getY()));
