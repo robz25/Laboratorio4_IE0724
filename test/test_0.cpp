@@ -45,6 +45,7 @@ TEST(fileExists, positive) {
     status_0 = Util::fileExists(puntos_archivo.contenido);
     EXPECT_EQ(status_0, true);
 
+  /* Se prueba si el procesamiento de datos es correcto */
     std::ifstream infile(puntos_archivo.contenido);
     std::string linea;
     int status_1, status_2;
@@ -52,7 +53,6 @@ TEST(fileExists, positive) {
     while (std::getline(infile, linea)) {
       std::istringstream iss(linea);
       std::string str_0;
-      std::cout<<linea<<std::endl;
 
       while(std::getline(iss, str_0 , ',')){
         status_1 = false;
