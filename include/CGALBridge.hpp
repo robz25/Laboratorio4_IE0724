@@ -52,6 +52,10 @@ class CGALBridge {
     int i = 0;
     while (std::getline(infile, linea)) {
       i++;  // permite indicar el número de línea en caso de advertencia.
+      // Ignora lineas vacias
+      if (linea.empty()) {
+        continue;
+      }
       std::istringstream iss(linea);
       try {
         Punto *punto = new Punto(
