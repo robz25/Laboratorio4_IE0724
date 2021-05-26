@@ -128,6 +128,9 @@ class CGALBridge {
     } catch (const std::exception &e) {
       throw std::invalid_argument(e.what());
     }
+    if (puntos->size() == 0) {
+      throw std::invalid_argument("No se encontraron puntos en el archivo.");
+    }
     for (auto it = puntos->begin(); it != puntos->end(); ++it) {
       std::istringstream iss(std::to_string(it->getX()) + " " +
                              std::to_string(it->getY()));
