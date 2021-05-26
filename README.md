@@ -1,7 +1,7 @@
 <h1> Proyecto1_IE0724 </h1>
 
 <h2> Curso: Laboratorio de programación IE - 0724</h2>
-  
+
 <h2> Tema: Visualización de diagramas de Voronoi haciendo uso del lenguaje de programación C++ </h2>
 
 <h2>Integrantes:</h2>
@@ -40,34 +40,34 @@
       ser bidimensionales, es decir, de la forma (x,y). La visualización del diagrama se realiza con la ayuda de la biblioteca CGAL, que es un proyecto
       de software que provee algoritmos geométricos desarrollados en C++.
   </p>
-  
+
   <p>
-      Para la visualización del diagrama, el programa requiere extraer la información contenida en un archivo de texto de formato txt; éste es recibido como             entrada por éste y es procesado para determinar, primeramente, si los valores introducidos tienen el tipo y formato adecuados (en este caso, de tipo               "float") y para dibujar el diagrama de Voronoi con el apoyo de CGAL. Una vez que el diagrama es dibujado por el programa, éste se almacena en un archivo de       formato .png en la carpeta "build" (que se mencionará en la siguiente sección) que se tiene por nombre "diagrama.png". Este archivo puede abrirse con 
+      Para la visualización del diagrama, el programa requiere extraer la información contenida en un archivo de texto de formato txt; éste es recibido como             entrada por éste y es procesado para determinar, primeramente, si los valores introducidos tienen el tipo y formato adecuados (en este caso, de tipo               "float") y para dibujar el diagrama de Voronoi con el apoyo de CGAL. Una vez que el diagrama es dibujado por el programa, éste se almacena en un archivo de       formato .png en la carpeta "build" (que se mencionará en la siguiente sección) que se tiene por nombre "diagrama.png". Este archivo puede abrirse con
       cualquier visor de imágenes integrado en el sistema operativo.
   </p>
 
-  
+
 <h3> Instrucciones de compilación y ejecución </h3>
   <p>
-      Para la compilación y ejecución del programa es necesario tener instalada la herramienta de automatización de código CMake. 
+      Para la compilación y ejecución del programa es necesario tener instalada la herramienta de automatización de código CMake.
       Se debe descargar el repositorio y dentro de la carpeta en la que están incluidos los directorios de "include" y "src" ejecutar las siguientes
       instrucciones en la consola (terminal) de comandos:
   </p>
-  
+
   ```
-  mkdir build && cd build     
-  cmake ..                    
-  make                        
-  ./Proyecto1 ../[nombre_del_archivo].txt   
+  mkdir build && cd build
+  cmake ..
+  make
+  ./Proyecto1 ../[nombre_del_archivo].txt
   ```
-      
+
   <p>
       Ejemplo de la última instrucción del ejecutable:
                   ./Proyecto1 ../entrada1.txt
   </p>
-  
-  
-  
+
+
+
   <h3>Pasos a seguir con una instalación limpia de ubuntu 20.04 mínima. </h3>
 
  - Se requiere interfaz gráfica, se usa la interfaz por defecto, gnome.
@@ -109,8 +109,8 @@
      ./Proyecto1 ../puntos.txt
      ```
      También es posible hacer uso del script de bash adjunto que sirve para hacer la compilación y ejecución automática.
-  
-  
-  
-  
-  
+
+<h3>Ejecutar con Docker</h3>
+```
+docker build . --file Dockerfile --tag img
+```
