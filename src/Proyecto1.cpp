@@ -40,7 +40,11 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  CGALBridge::dibujar(CGALBridge::crearDiagramaVoronoi(archivo));
+  try {
+    CGALBridge::dibujar(CGALBridge::crearDiagramaVoronoi(archivo,true));
+  } catch (const std::exception &e) {
+    std::cout << e.what() << std::endl;
+  }
 
   return 0;
 }
