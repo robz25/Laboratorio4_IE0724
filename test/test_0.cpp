@@ -52,9 +52,7 @@ TEST(fileExists, positive) {
     while (std::getline(infile, linea)) {
       std::istringstream iss(linea);
       std::string str_0;
-      //iss >> str_0;
       std::cout<<linea<<std::endl;
-      //std::cout<<str_0<<"\n"<<std::endl;
 
       while(std::getline(iss, str_0 , ',')){
         status_1 = false;
@@ -63,9 +61,6 @@ TEST(fileExists, positive) {
         status_1 = Util::isFloat(str_0);
         /* Chequear si es un float con la función del creador del test. */
         status_2 = float_gtest(str_0);
-        std::cout<<str_0<<std::endl;
-        std::cout<<status_1<<" status_1"<<std::endl;
-        std::cout<<status_2<<" status_2"<<std::endl;
         EXPECT_EQ(status_1, status_2);
       }
     }
