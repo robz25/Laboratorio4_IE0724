@@ -62,6 +62,5 @@ RUN mkdir -p /home/laboratorio4 \
     && cmake --build /home/laboratorio4/build --config Release
 
 # Ejecutar tests
-RUN cd /home/laboratorio4/build && \
-    ./Tests > tests.log && \
-    cat tests.log
+RUN cd /home/laboratorio4 && \
+    ./build/Tests
