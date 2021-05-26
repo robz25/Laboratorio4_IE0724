@@ -17,7 +17,7 @@ include_directories(${GTEST_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 file(GLOB SOURCES_EXE "src/*.cpp")
-file(GLOB TESTS_EXE "test/*.cpp")
+file(GLOB TESTS_EXE "test/*.cpp" "src/Punto.cpp")
 add_compile_options("-W" "-Wall" "-pedantic")
 add_executable(Proyecto1 ${SOURCES_EXE})
 add_executable(Tests ${TESTS_EXE})
