@@ -18,6 +18,7 @@
  */
 int main(int argc, char **argv) {
   std::string archivo;
+  bool throwWarns = true;
   // El primer argumento es el ejecutable, por lo que se requieren 2 argumentos
   // como mínimo.
   if (argc < 2) {
@@ -27,9 +28,14 @@ int main(int argc, char **argv) {
     return 1;
   } else {
     if (argc > 2) {
-      std::cerr
-          << "Advertencia: Argumentos ignorados, solo se acepta un argumento."
-          << std::endl;
+      char ignore[] = "--ignore-invalid";
+      if (argc == 3 && std::strcmp(argv[2],ignore) == 0) {
+        throwWarns = false;
+      } else {
+        std::cerr
+            << "Advertencia: Argumentos ignorados, solo se acepta un argumento."
+            << std::endl;
+      }
     }
     archivo = argv[1];
   }
@@ -41,7 +47,7 @@ int main(int argc, char **argv) {
   }
 
   try {
-    CGALBridge::dibujar(CGALBridge::crearDiagramaVoronoi(archivo,true));
+    CGALBridge::dibujar(CGALBridge::crearDiagramaVoronoi(archivo,throwWarns));
   } catch (const std::exception &e) {
     std::cout << e.what() << std::endl;
   }
