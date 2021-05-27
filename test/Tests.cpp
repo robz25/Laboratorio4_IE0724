@@ -67,6 +67,32 @@ TEST(fileExists, positive) {
   }
 }
 
+//./exe --gtest_repeat=10
+//
+TEST(Prueba2, positive){
+
+//	int result = 0;i
+
+	std::ofstream archivoPuntos;
+        archivoPuntos.open("puntosTest.txt");
+        float limInferior = -100;
+        float limSuperior = 100;
+        srand (time(NULL));
+        int cantPuntos = rand()%100 +3;
+        for(int c = 0;c < cantPuntos;c++){
+                float x = float(rand())/float((RAND_MAX))*(limSuperior - limInferior) + limInferior;
+                float y = float(rand())/float((RAND_MAX))*(limSuperior - limInferior) + limInferior;
+                archivoPuntos << std::to_string(x) + " "+std::to_string(y)+"\n";
+        }
+        archivoPuntos.close();
+
+	EXPECT_THROW(CGALBridge::crearDiagramaVoronoi("puntosTest.txt", true),
+               std::runtime_error);
+//	CGALBridge::crearDiagramaVoronoi("puntosTest.txt");
+
+//	EXPECT_EQ(result, 0);
+}
+
 // Prueba negativa:
 // Se ejecutarán las funciones para generar el diagrama de Voronoi con entradas
 // inválidas, y corroborar que las funciones devuelvan un código de error. Se
