@@ -110,7 +110,13 @@
      ```
      También es posible hacer uso del script de bash adjunto que sirve para hacer la compilación y ejecución automática.
 
-<h3>Ejecutar con Docker</h3>
+<h3>Ejecutar Pruebas</h3>
+Luego de haber compilado, desde la raiz del proyecto, ejecutar:
+```
+./build/Tests
+```
+
+<h3>Ejecutar Pruebas con Docker</h3>
 ```
 docker build . --file Dockerfile --tag img
 ```
