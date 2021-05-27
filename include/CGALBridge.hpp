@@ -106,15 +106,19 @@ class CGALBridge {
    * @param archivo Ruta al archivo de entrada.
    * @return VD Diagrama de voronoi.
    */
-  static VD crearDiagramaVoronoi(std::string archivo) {
+  static VD crearDiagramaVoronoi(std::string archivo,bool throwOnWarning = false) {
     VD vd;
     Site_2 t;
     std::vector<Punto> *puntos = obtenerPuntos(archivo);
-    for (auto it = puntos->begin(); it != puntos->end(); ++it) {
-      std::istringstream iss(std::to_string(it->getX()) + " " +
-                             std::to_string(it->getY()));
-      iss >> t;
-      vd.insert(t);
+    try{
+	    for (auto it = puntos->begin(); it != puntos->end(); ++it) {
+	      std::istringstream iss(std::to_string(it->getX()) + " " +
+	                             std::to_string(it->getY()));
+	      iss >> t;
+	      vd.insert(t);
+    	}
+    } catch(const std::exception &e) {
+      throw std::runtime_error(e.what());
     }
     return vd;
   }
