@@ -67,7 +67,8 @@ class CGALBridge {
       } catch (const std::exception &e) {
         if (throwOnWarning) {
           throw std::invalid_argument(
-              "Formato inválido encontrado en el archivo " + archivo + ", línea: " + std::to_string(i) + ".");
+              "Formato inválido encontrado en el archivo " + archivo +
+              ", línea: " + std::to_string(i) + ".");
         } else {
           // Ignorar línea e imprimir advetencia.
           std::cerr << "Advertencia: Línea " << i << " del archivo " << archivo
@@ -131,11 +132,15 @@ class CGALBridge {
     if (puntos->size() == 0) {
       throw std::invalid_argument("No se encontraron puntos en el archivo.");
     }
-    for (auto it = puntos->begin(); it != puntos->end(); ++it) {
-      std::istringstream iss(std::to_string(it->getX()) + " " +
-                             std::to_string(it->getY()));
-      iss >> t;
-      vd.insert(t);
+    try {
+      for (auto it = puntos->begin(); it != puntos->end(); ++it) {
+        std::istringstream iss(std::to_string(it->getX()) + " " +
+                               std::to_string(it->getY()));
+        iss >> t;
+        vd.insert(t);
+      }
+    } catch (const std::exception &e) {
+      throw std::runtime_error(e.what());
     }
     return vd;
   }

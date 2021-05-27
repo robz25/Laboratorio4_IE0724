@@ -15,9 +15,12 @@ TEST(Util, positive) {
     EXPECT_EQ(status, true);
 }
 
-TEST(crearDiagramaVoronoi, positive){
 
-	int result = 0;
+//./exe --gtest_repeat=10
+//
+TEST(Prueba2, positive){
+
+//	int result = 0;i
 
 	std::ofstream archivoPuntos;
         archivoPuntos.open("puntosTest.txt");
@@ -32,9 +35,11 @@ TEST(crearDiagramaVoronoi, positive){
         }
         archivoPuntos.close();
 
-	VD voronoi = CGALBridge::crearDiagramaVoronoi("puntosTest.txt");
+	EXPECT_THROW(CGALBridge::crearDiagramaVoronoi("puntosTest.txt", true),
+               std::runtime_error);
+//	CGALBridge::crearDiagramaVoronoi("puntosTest.txt");
 
-	EXPECT_EQ(result, 0);	
+//	EXPECT_EQ(result, 0);	
 }
 
 int main(int argc, char **argv) {
