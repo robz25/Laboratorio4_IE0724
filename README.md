@@ -16,6 +16,19 @@
 
 <hr>
 
+<h3>Ejecutar Pruebas</h3>  
+
+Luego de haber compilado, desde la raiz del proyecto, ejecutar:
+```
+./build/Tests
+```
+
+<h3>Ejecutar Pruebas con Docker</h3>
+```
+docker build . --file Dockerfile --tag img
+```
+
+
 ## Tabla de contenidos
 * [Síntesis del funcionamiento del programa](#program-info)
 * [Instrucciones de compilación y ejecución](#instructions)
@@ -48,6 +61,18 @@
 
 
 <h3> Instrucciones de compilación y ejecución </h3>
+<h3>Ejecutar Pruebas</h3>  
+
+Luego de haber compilado, desde la raiz del proyecto, ejecutar:
+```
+./build/Tests
+```
+
+<h3>Ejecutar Pruebas con Docker</h3>
+```
+docker build . --file Dockerfile --tag img
+```
+
   <p>
       Para la compilación y ejecución del programa es necesario tener instalada la herramienta de automatización de código CMake.
       Se debe descargar el repositorio y dentro de la carpeta en la que están incluidos los directorios de "include" y "src" ejecutar las siguientes
@@ -108,15 +133,4 @@
      cd ~/Proyecto1_IE0724/build
      ./Proyecto1 ../puntos.txt
      ```
-     También es posible hacer uso del script de bash adjunto que sirve para hacer la compilación y ejecución automática.
-
-<h3>Ejecutar Pruebas</h3>
-Luego de haber compilado, desde la raiz del proyecto, ejecutar:
-```
-./build/Tests
-```
-
-<h3>Ejecutar Pruebas con Docker</h3>
-```
-docker build . --file Dockerfile --tag img
-```
+     También es posible hacer uso del script de bash adjunto que sirve para hacer la compilación y ejecución automática.  
