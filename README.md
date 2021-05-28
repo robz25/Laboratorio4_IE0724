@@ -2,7 +2,7 @@
 
 <h2> Curso: Laboratorio de programación IE - 0724</h2>
 
-<h2> Tema: Visualización de diagramas de Voronoi haciendo uso del lenguaje de programación C++ </h2>
+<h2> Tema: Creación de un contenedor de Docker para ejecución de pruebas unitarias automatizadas mediante GTest en C++ </h2>
 
 <h2>Integrantes:</h2>
 
@@ -49,14 +49,11 @@ docker build . --file Dockerfile --tag img
 
 <h3>  Síntesis del funcionamiento del programa  </h3>
   <p >
-      El programa se encarga de realizar la visualización de un diagrama de Voronoi bidimensional de un conjunto de pares ordenados que también deben
-      ser bidimensionales, es decir, de la forma (x,y). La visualización del diagrama se realiza con la ayuda de la biblioteca CGAL, que es un proyecto
-      de software que provee algoritmos geométricos desarrollados en C++.
+      Se tiene un dockerfile encargado de generar un contenedor con todos los requisitos de entorno para ejecutar nuestro código
   </p>
 
   <p>
-      Para la visualización del diagrama, el programa requiere extraer la información contenida en un archivo de texto de formato txt; éste es recibido como             entrada por éste y es procesado para determinar, primeramente, si los valores introducidos tienen el tipo y formato adecuados (en este caso, de tipo               "float") y para dibujar el diagrama de Voronoi con el apoyo de CGAL. Una vez que el diagrama es dibujado por el programa, éste se almacena en un archivo de       formato .png en la carpeta "build" (que se mencionará en la siguiente sección) que se tiene por nombre "diagrama.png". Este archivo puede abrirse con
-      cualquier visor de imágenes integrado en el sistema operativo.
+      Se integra Gtest mediante un Cmake y con comandos RUN se realiza la compulación del código fuente y ejecución de pruebas tras la creación del contenedor
   </p>
 
 
