@@ -67,32 +67,77 @@ TEST(fileExists, positive) {
   }
 }
 
-//./exe --gtest_repeat=10
-//
-TEST(Prueba2, positive){
 
-//	int result = 0;i
+void testVoronoi(void){
 
 	std::ofstream archivoPuntos;
         archivoPuntos.open("puntosTest.txt");
         float limInferior = -100;
         float limSuperior = 100;
-        srand (time(NULL));
         int cantPuntos = rand()%100 +3;
         for(int c = 0;c < cantPuntos;c++){
+
                 float x = float(rand())/float((RAND_MAX))*(limSuperior - limInferior) + limInferior;
                 float y = float(rand())/float((RAND_MAX))*(limSuperior - limInferior) + limInferior;
-                archivoPuntos << std::to_string(x) + " "+std::to_string(y)+"\n";
+                archivoPuntos << std::to_string(x) + ", "+std::to_string(y)+"\n";
+		if(c == 0)std::cout << x << ", " << y << std::endl;
         }
         archivoPuntos.close();
-
-	EXPECT_THROW(CGALBridge::crearDiagramaVoronoi("puntosTest.txt", true),
-               std::runtime_error);
-//	CGALBridge::crearDiagramaVoronoi("puntosTest.txt");
-
-//	EXPECT_EQ(result, 0);
+	CGALBridge::crearDiagramaVoronoi("puntosTest.txt", true);
 }
 
+
+//./exe --gtest_repeat=10
+//
+TEST(Prueba2, iteracion_1){
+        srand (time(NULL));
+	EXPECT_NO_THROW(testVoronoi());
+}
+
+TEST(Prueba2, iteracion_2){
+        srand (time(NULL)+1000);
+	EXPECT_NO_THROW(testVoronoi());
+}
+
+TEST(Prueba2, iteracion_3){
+        srand (time(NULL)+2000);
+	EXPECT_NO_THROW(testVoronoi());
+}
+
+TEST(Prueba2, iteracion_4){
+        srand (time(NULL)+3000);
+	EXPECT_NO_THROW(testVoronoi());
+}
+
+TEST(Prueba2, iteracion_5){
+        srand (time(NULL)+4000);
+	EXPECT_NO_THROW(testVoronoi());
+}
+
+TEST(Prueba2, iteracion_6){
+        srand (time(NULL)+5000);
+	EXPECT_NO_THROW(testVoronoi());
+}
+
+TEST(Prueba2, iteracion_7){
+        srand (time(NULL)+6000);
+	EXPECT_NO_THROW(testVoronoi());
+}
+
+TEST(Prueba2, iteracion_8){
+        srand (time(NULL)+7000);
+	EXPECT_NO_THROW(testVoronoi());
+}
+
+TEST(Prueba2, iteracion_9){
+        srand (time(NULL)+8000);
+	EXPECT_NO_THROW(testVoronoi());
+}
+
+TEST(Prueba2, iteracion_10){
+        srand (time(NULL)+9000);
+	EXPECT_NO_THROW(testVoronoi());
+}
 // Prueba negativa:
 // Se ejecutarán las funciones para generar el diagrama de Voronoi con entradas
 // inválidas, y corroborar que las funciones devuelvan un código de error. Se
@@ -114,7 +159,9 @@ TEST(Prueba3, numeros_sin_formato_valido) {
 }
 
 int main(int argc, char** argv) {
-  puntos_archivo.contenido = "./puntos.txt";
+
+  puntos_archivo.contenido = "./1puntosTest.txt";
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
+
 }
