@@ -68,35 +68,39 @@ TEST(fileExists, positive) {
 }
 
 
-void testVoronoi(void){
+void testVoronoi(void){//funcion encargada de generar listas de pares ordenados aleatorios
 
 	std::ofstream archivoPuntos;
-        archivoPuntos.open("puntosTest.txt");
+        archivoPuntos.open("puntosTest.txt");//nombre del archivo nuevo de puntos aleatorios
         float limInferior = -100;
         float limSuperior = 100;
-        int cantPuntos = rand()%100 +3;
+        int cantPuntos = rand()%100 +3;//la cantidad de puntos varia entre 3 y 100
         for(int c = 0;c < cantPuntos;c++){
 
                 float x = float(rand())/float((RAND_MAX))*(limSuperior - limInferior) + limInferior;
+		//cada numero aleatorio va entre -100.0 y 100.0
                 float y = float(rand())/float((RAND_MAX))*(limSuperior - limInferior) + limInferior;
                 archivoPuntos << std::to_string(x) + ", "+std::to_string(y)+"\n";
+		//isertar cada punto como un string en un archivo
 		if(c == 0)std::cout << x << ", " << y << std::endl;
+		//para revisar que los puntos sean diferentes
         }
-        archivoPuntos.close();
-	CGALBridge::crearDiagramaVoronoi("puntosTest.txt", true);
+        archivoPuntos.close();//cerrar el archivo
+	CGALBridge::crearDiagramaVoronoi("puntosTest.txt", true);//llamar la funcion para
+	//generar el diagrama de voronoi
 }
 
 
 //./exe --gtest_repeat=10
-//
+
 TEST(Prueba2, iteracion_1){
         srand (time(NULL));
-	EXPECT_NO_THROW(testVoronoi());
+	EXPECT_NO_THROW(testVoronoi());//esperamos que no haya error
 }
 
 TEST(Prueba2, iteracion_2){
-        srand (time(NULL)+1000);
-	EXPECT_NO_THROW(testVoronoi());
+        srand (time(NULL)+1000);//alimentar el random con una semilla diferente
+	EXPECT_NO_THROW(testVoronoi());//si hay error la prueba falla
 }
 
 TEST(Prueba2, iteracion_3){
@@ -134,10 +138,11 @@ TEST(Prueba2, iteracion_9){
 	EXPECT_NO_THROW(testVoronoi());
 }
 
-TEST(Prueba2, iteracion_10){
+TEST(Prueba2, iteracion_10){//10 repeticiones de la prueba 2
         srand (time(NULL)+9000);
 	EXPECT_NO_THROW(testVoronoi());
 }
+
 // Prueba negativa:
 // Se ejecutarán las funciones para generar el diagrama de Voronoi con entradas
 // inválidas, y corroborar que las funciones devuelvan un código de error. Se
