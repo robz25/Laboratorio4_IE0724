@@ -31,7 +31,7 @@ TEST(Prueba2, positive){
         for(int c = 0;c < cantPuntos;c++){
                 float x = float(rand())/float((RAND_MAX))*(limSuperior - limInferior) + limInferior;
                 float y = float(rand())/float((RAND_MAX))*(limSuperior - limInferior) + limInferior;
-                archivoPuntos << std::to_string(x) + " "+std::to_string(y)+"\n";
+                archivoPuntos << std::to_string(x) + ", "+std::to_string(y)+"\n";
         }
         archivoPuntos.close();
 
